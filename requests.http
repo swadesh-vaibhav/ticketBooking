@@ -1,0 +1,38 @@
+###
+GET http://localhost:8080/organizers
+
+<> 2024-11-30T144324.200.json
+
+###
+GET http://localhost:8080/events/801
+
+<> 2024-11-30T151657.404.json
+<> 2024-11-30T144434.200.json
+<> 2024-11-30T144353.500.json
+
+###
+GET http://localhost:8080/products?
+    eventId=501
+
+<> 2024-11-30T144737.200.json
+
+###
+POST http://localhost:8080/registrations
+Content-Type: application/json
+
+{
+  "productId": 851,
+  "attendeeName": "Srishti"
+}
+
+<> 2024-12-02T090710.200.json
+<> 2024-12-02T080554.200.json
+<> 2024-12-02T080544.200.json
+<> 2024-12-02T075726.200.json
+<> 2024-12-02T075721.200.json
+<> 2024-12-02T075437.200.json
+<> 2024-12-02T075030.200.json
+<> 2024-12-02T075023.200.json
+<> 2024-12-02T075002.400.json
+<> 2024-11-30T151031.200.json
+<> 2024-11-30T150954.404.json
