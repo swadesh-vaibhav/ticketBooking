@@ -3,7 +3,7 @@ CREATE TABLE public.events (
     end_date date,
     name character varying(255) NOT NULL,
     start_date date,
-    organizer_id integer NOT NULL,
+    organiser_id integer NOT NULL,
     venue_id integer NOT NULL
 );
 
@@ -22,15 +22,15 @@ ALTER TABLE public.events_id_seq OWNER TO pluralsight;
 
 ALTER SEQUENCE public.events_id_seq OWNED BY public.events.id;
 
-CREATE TABLE public.organizers (
+CREATE TABLE public.organisers (
     id integer NOT NULL,
     description character varying(255),
     name character varying(255) NOT NULL
 );
 
-ALTER TABLE public.organizers OWNER TO pluralsight;
+ALTER TABLE public.organisers OWNER TO pluralsight;
 
-CREATE SEQUENCE public.organizers_id_seq
+CREATE SEQUENCE public.organisers_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -38,9 +38,9 @@ CREATE SEQUENCE public.organizers_id_seq
     NO MAXVALUE
     CACHE 1;
 
-ALTER TABLE public.organizers_id_seq OWNER TO pluralsight;
+ALTER TABLE public.organisers_id_seq OWNER TO pluralsight;
 
-ALTER SEQUENCE public.organizers_id_seq OWNED BY public.organizers.id;
+ALTER SEQUENCE public.organisers_id_seq OWNED BY public.organisers.id;
 
 CREATE TABLE public.products (
     id integer NOT NULL,
@@ -88,7 +88,7 @@ ALTER SEQUENCE public.venues_id_seq OWNED BY public.venues.id;
 
 ALTER TABLE ONLY public.events ALTER COLUMN id SET DEFAULT nextval('public.events_id_seq'::regclass);
 
-ALTER TABLE ONLY public.organizers ALTER COLUMN id SET DEFAULT nextval('public.organizers_id_seq'::regclass);
+ALTER TABLE ONLY public.organisers ALTER COLUMN id SET DEFAULT nextval('public.organisers_id_seq'::regclass);
 
 ALTER TABLE ONLY public.products ALTER COLUMN id SET DEFAULT nextval('public.products_id_seq'::regclass);
 
@@ -97,8 +97,8 @@ ALTER TABLE ONLY public.venues ALTER COLUMN id SET DEFAULT nextval('public.venue
 ALTER TABLE ONLY public.events
     ADD CONSTRAINT events_pkey PRIMARY KEY (id);
 
-ALTER TABLE ONLY public.organizers
-    ADD CONSTRAINT organizers_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.organisers
+    ADD CONSTRAINT organisers_pkey PRIMARY KEY (id);
 
 ALTER TABLE ONLY public.products
     ADD CONSTRAINT products_pkey PRIMARY KEY (id);
@@ -107,7 +107,7 @@ ALTER TABLE ONLY public.venues
     ADD CONSTRAINT venues_pkey PRIMARY KEY (id);
 
 ALTER TABLE ONLY public.events
-    ADD CONSTRAINT fkmied7el0kcl27ul1mn6384hki FOREIGN KEY (organizer_id) REFERENCES public.organizers(id);
+    ADD CONSTRAINT fkmied7el0kcl27ul1mn6384hki FOREIGN KEY (organiser_id) REFERENCES public.organisers(id);
 
 ALTER TABLE ONLY public.events
     ADD CONSTRAINT fkqdxygdernwwt74hdvix9u5nr3 FOREIGN KEY (venue_id) REFERENCES public.venues(id);
