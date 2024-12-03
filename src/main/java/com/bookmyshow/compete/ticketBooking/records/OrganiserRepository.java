@@ -1,16 +1,6 @@
 package com.bookmyshow.compete.ticketBooking.records;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
-
-@Repository
-public class OrganiserRepository {
-    private final List<Organiser> organizers = List.of(
-            new Organiser(101, "Globomantics", "Globomantics Technology Corporation"),
-            new Organiser(102, "Carved Rock", "Carved Rock Sports Equipment"));
-
-    public List<Organiser> findAll() {
-        return organizers;
-    }
+public interface OrganiserRepository extends JpaRepository<Organiser, Integer> {
 }

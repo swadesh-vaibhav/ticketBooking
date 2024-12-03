@@ -3,3 +3,10 @@ services:
     image: mongo
     ports:
       - '27017:27017'
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: swadesh
+      POSTGRES_PASSWORD: swadesh
+    ports:
+      - '5432:5432'
