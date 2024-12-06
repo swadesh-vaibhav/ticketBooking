@@ -22,3 +22,38 @@ While most of the inheritance is fine, it also inherits unwanted elements like `
 To prevent this, the project POM contains empty overrides for these elements.
 If you manually switch to a different parent and actually want the inheritance, you need to remove those overrides.
 
+# Running the Project
+
+## Docker
+
+### Starting containers
+```
+docker compose up -d 
+```
+
+### Explore PostGresql
+```
+docker exec -it ticketbooking-postgres-1 psql -U pluralsight -d pluralsight
+```
+
+## Spring
+
+### Seed events data
+Run test profile by running:
+
+```
+cd event-service
+./mvnw spring-boot:run "-Dspring-boot.run.profiles=testdata"
+```
+
+### Run events service 
+```
+cd event-service
+.\mvnw spring-boot:run
+```
+
+### Run registration service 
+```
+cd registration-service
+.\mvnw spring-boot:run
+```

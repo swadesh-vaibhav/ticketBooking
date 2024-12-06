@@ -1,18 +1,23 @@
 ###
-GET http://localhost:8080/organizers
+GET http://localhost:8081/organizers
 
 <> 2024-11-30T144324.200.json
 
 ###
-GET http://localhost:8080/events/501
+GET http://localhost:8081/events/501
 
 <> 2024-11-30T151657.404.json
 <> 2024-11-30T144434.200.json
 <> 2024-11-30T144353.500.json
 
 ###
-GET http://localhost:8080/products?
+GET http://localhost:8081/products?
     eventId=501
+
+<> 2024-11-30T144737.200.json
+
+###
+GET http://localhost:8081/products/801
 
 <> 2024-11-30T144737.200.json
 
@@ -21,7 +26,7 @@ POST http://localhost:8080/registrations
 Content-Type: application/json
 
 {
-  "productId": 851,
+  "productId": 801,
   "attendeeName": "Srishti"
 }
 

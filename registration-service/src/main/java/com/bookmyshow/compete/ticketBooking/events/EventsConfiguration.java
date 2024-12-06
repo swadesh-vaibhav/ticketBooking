@@ -18,7 +18,7 @@ public class EventsConfiguration {
     @Bean
     public EventsClient eventsClient(WebClient webClient) {
         return HttpServiceProxyFactory
-                .builder(WebClientAdapter.forClient(webClient))
+                .builderFor(WebClientAdapter.create(webClient))
                 .build()
                 .createClient(EventsClient.class);
     }
