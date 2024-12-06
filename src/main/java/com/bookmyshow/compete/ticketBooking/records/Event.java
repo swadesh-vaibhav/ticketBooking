@@ -5,12 +5,10 @@ import jakarta.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
 
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Table(name="events")
 public class Event {
 

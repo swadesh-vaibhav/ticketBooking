@@ -3,12 +3,10 @@ package com.bookmyshow.compete.ticketBooking.records;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
 
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Table(name="organisers")
 public class Organiser {
 

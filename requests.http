@@ -4,7 +4,7 @@ GET http://localhost:8080/organizers
 <> 2024-11-30T144324.200.json
 
 ###
-GET http://localhost:8080/events/801
+GET http://localhost:8080/events/501
 
 <> 2024-11-30T151657.404.json
 <> 2024-11-30T144434.200.json
@@ -25,6 +25,7 @@ Content-Type: application/json
   "attendeeName": "Srishti"
 }
 
+
 <> 2024-12-02T090710.200.json
 <> 2024-12-02T080554.200.json
 <> 2024-12-02T080544.200.json
@@ -36,3 +37,8 @@ Content-Type: application/json
 <> 2024-12-02T075002.400.json
 <> 2024-11-30T151031.200.json
 <> 2024-11-30T150954.404.json
+
+###
+
+
+GET http://localhost:8080/registrations/d6255372-e693-4beb-9e80-73d5dfbae0de
