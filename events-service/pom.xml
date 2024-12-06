@@ -13,7 +13,6 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>events-service</name>
     <description>events-service</description>
-    <packaging>pom</packaging>
     <url/>
     <licenses>
         <license/>
