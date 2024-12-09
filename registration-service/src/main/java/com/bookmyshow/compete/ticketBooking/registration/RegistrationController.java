@@ -1,6 +1,7 @@
 package com.bookmyshow.compete.ticketBooking.registration;
 
 import com.bookmyshow.compete.ticketBooking.events.Event;
+import com.bookmyshow.compete.ticketBooking.events.EventsClient;
 import com.bookmyshow.compete.ticketBooking.events.Product;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpHeaders;
@@ -16,30 +17,20 @@ import java.util.UUID;
 public class RegistrationController {
 
     private final RegistrationRepository registrationRepository;
-    private final WebClient webClient;
+    private final EventsClient eventsClient;
 
-    public RegistrationController(WebClient webClient, RegistrationRepository registrationRepository) {
+    public RegistrationController(EventsClient eventsClient, RegistrationRepository registrationRepository) {
         this.registrationRepository = registrationRepository;
-        this.webClient = webClient;
+        this.eventsClient = eventsClient;
     }
 
     @PostMapping
     public Registration create(@RequestBody @Valid Registration registration) {
         String ticketCode = UUID.randomUUID().toString();
 
-        Product product = webClient.get()
-                .uri("products/{id}", registration.productId())
-                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                .retrieve()
-                .bodyToMono(Product.class)
-                .block();
+        Product product = eventsClient.getProductById(registration.productId());
 
-        Event event = webClient.get()
-                .uri("events/{id}", product.eventId())
-                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                .retrieve()
-                .bodyToMono(Event.class)
-                .block();
+        Event event = eventsClient.getEventById(product.eventId());
 
         Registration newRegistration = new Registration(
                 null,
