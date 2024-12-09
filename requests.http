@@ -46,4 +46,4 @@ Content-Type: application/json
 ###
 
 
-GET http://localhost:8080/registrations/d6255372-e693-4beb-9e80-73d5dfbae0de
+GET http://localhost:8080/registrations/d87dd447-2b1d-4ded-90f2-769e26780bd3
