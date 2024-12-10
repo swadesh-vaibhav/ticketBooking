@@ -79,3 +79,15 @@ Content-Type: application/json
 {
   "configuredLevel": "DEBUG"
 }
+
+
+###
+GET http://localhost:8080/actuator/metrics
+
+
+###
+GET http://localhost:8080/actuator/metrics/http.server.requests
+
+
+###
+GET http://localhost:8080/actuator/metrics/http.server.requests?tag=method:POST&tag=uri:/registrations
