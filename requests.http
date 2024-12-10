@@ -43,7 +43,7 @@ Content-Type: application/json
 <> 2024-11-30T150954.404.json
 
 ###
-GET http://localhost:8080/registrations/fdceb9dc-4fc8-4872-aaad-30adcbb154ad
+GET http://localhost:8080/registrations/4250d988-5faa-448b-8946-81689f1419b4
 
 
 # Spring Actuator

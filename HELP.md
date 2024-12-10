@@ -23,7 +23,6 @@ To prevent this, the project POM contains empty overrides for these elements.
 If you manually switch to a different parent and actually want the inheritance, you need to remove those overrides.
 
 # Running the Project
-
 ## Docker
 
 ### Starting containers
@@ -42,13 +41,13 @@ docker exec -it ticketbooking-postgres-1 psql -U pluralsight -d pluralsight
 Run test profile by running:
 
 ```
-cd event-service
+cd events-service
 ./mvnw spring-boot:run "-Dspring-boot.run.profiles=testdata"
 ```
 
 ### Run events service 
 ```
-cd event-service
+cd events-service
 .\mvnw spring-boot:run
 ```
 
@@ -57,3 +56,19 @@ cd event-service
 cd registration-service
 .\mvnw spring-boot:run
 ```
+
+## Deployment
+
+### Building docker images
+
+```
+cd events-service
+./mvnw package
+docker build -t events-service:0.0.1-SNAPSHOT .
+```
+```
+cd registration-service
+./mvnw package
+docker build -t registration-service:0.0.1-SNAPSHOT .
+```
+
