@@ -30,6 +30,9 @@ If you manually switch to a different parent and actually want the inheritance, 
 docker compose up -d 
 ```
 
+To run applications locally from command line, comment out events and registration 
+sections from the docker-compose file.
+
 ### Explore PostGresql
 ```
 docker exec -it ticketbooking-postgres-1 psql -U pluralsight -d pluralsight
@@ -46,6 +49,9 @@ cd events-service
 ```
 
 ### Run events service 
+
+If the events data is already data, subsequent runs on dev machine
+can be done using:
 ```
 cd events-service
 .\mvnw spring-boot:run
@@ -59,8 +65,9 @@ cd registration-service
 
 ## Deployment
 
-### Building docker images
+### Building docker images using maven 
 
+These commands use specs from the Dockerfile of each service.
 ```
 cd events-service
 ./mvnw package
@@ -72,3 +79,14 @@ cd registration-service
 docker build -t registration-service:0.0.1-SNAPSHOT .
 ```
 
+### Building docker images using Buildpacks through Spring Boot Maven Plugin
+
+These commands identify specs automatically
+```
+cd events-service
+.\mvnw spring-boot:build-image
+```
+```
+cd registration-service
+.\mvnw spring-boot:build-image
+```
