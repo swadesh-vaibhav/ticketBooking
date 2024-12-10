@@ -30,7 +30,6 @@ Content-Type: application/json
   "attendeeName": "Srishti"
 }
 
-
 <> 2024-12-02T090710.200.json
 <> 2024-12-02T080554.200.json
 <> 2024-12-02T080544.200.json
@@ -44,6 +43,39 @@ Content-Type: application/json
 <> 2024-11-30T150954.404.json
 
 ###
+GET http://localhost:8080/registrations/fdceb9dc-4fc8-4872-aaad-30adcbb154ad
 
 
-GET http://localhost:8080/registrations/d87dd447-2b1d-4ded-90f2-769e26780bd3
+# Spring Actuator
+
+###
+GET http://localhost:8080/actuator
+
+
+###
+GET http://localhost:8080/actuator/health
+
+
+###
+GET http://localhost:8080/actuator/beans
+
+
+###
+GET http://localhost:8080/actuator/conditions
+
+
+###
+GET http://localhost:8080/actuator/mappings
+
+
+###
+GET http://localhost:8080/actuator/loggers/org.springframework.web
+
+
+###
+POST http://localhost:8080/actuator/loggers/org.springframework.web
+Content-Type: application/json
+
+{
+  "configuredLevel": "DEBUG"
+}
