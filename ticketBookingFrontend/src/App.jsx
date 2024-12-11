@@ -18,7 +18,11 @@ const App = () => {
       </nav>
       <div>
         <Routes>
-          <Route path="/" element={<h1>Welcome to Ticket Booking</h1>} />
+          <Route path="/" element={<div>
+            <h1>Welcome to Ticket Booking</h1>
+            <br/>
+            <Link to='organisers'>Browse Organisers</Link>
+            </div>} />
           <Route path="/registrations" element={<EventsList />} />
           <Route path="/organisers" element={<OrganiserList />} />
           <Route path="/register" element={<RegistrationForm />} />
