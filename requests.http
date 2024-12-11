@@ -4,6 +4,9 @@ GET http://localhost:8081/organizers
 <> 2024-11-30T144324.200.json
 
 ###
+GET http://localhost:8081/events?organizerId=101
+
+###
 GET http://localhost:8081/events/501
 
 <> 2024-11-30T151657.404.json

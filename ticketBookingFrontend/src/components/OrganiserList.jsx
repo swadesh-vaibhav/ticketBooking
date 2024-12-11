@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './OrganiserList.css'; // Import the CSS file for OrganiserList
 
@@ -16,10 +17,12 @@ const OrganiserList = () => {
       <h2>Event Organisers</h2>
       <div className="organiser-list">
         {organisers.map(organiser => (
-          <div key={organiser.id} className="organiser-card">
-            <h3>{organiser.name}</h3>
-            <p>{organiser.description}</p>
-          </div>
+          <Link to={`/events/${organiser.id}`}>
+            <div key={organiser.id} className="organiser-card">
+              <h3>{organiser.name}</h3>
+              <p>{organiser.description}</p>
+            </div>
+          </Link>
         ))}
       </div>
     </div>
