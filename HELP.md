@@ -93,6 +93,10 @@ cd registration-service
 
 ### Option 3 - Building native docker images to be deployed through GraalVM
 
+<i>(Non-functional as of now)</i>
+<br/>
+Uncomment commented sections of both pom.xml files.
+
 ```
 cd events-service
 .\mvnw -Pnative spring-boot:build-image
