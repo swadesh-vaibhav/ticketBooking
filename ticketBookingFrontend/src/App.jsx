@@ -8,15 +8,15 @@ import './App.css'; // Import the CSS file
 const App = () => {
   return (
     <Router>
+      <nav>
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/registrations">Registrations</Link></li>
+          <li><Link to="/organisers">Organisers</Link></li>
+          <li><Link to="/register">Register</Link></li>
+        </ul>
+      </nav>
       <div>
-        <nav>
-          <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/registrations">Registrations</Link></li>
-            <li><Link to="/organisers">Organisers</Link></li>
-            <li><Link to="/register">Register</Link></li>
-          </ul>
-        </nav>
         <Routes>
           <Route path="/" element={<h1>Welcome to Ticket Booking</h1>} />
           <Route path="/registrations" element={<RegistrationList />} />
