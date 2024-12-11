@@ -17,12 +17,15 @@ const OrganiserList = () => {
       <h2>Event Organisers</h2>
       <div className="organiser-list">
         {organisers.map(organiser => (
-          <Link to={`/events/${organiser.id}`}>
-            <div key={organiser.id} className="organiser-card">
+          <Link
+          key={organiser.id} 
+          to="/events"
+          state={{ organiser: organiser }}>
+            <div className="organiser-card">
               <h3>{organiser.name}</h3>
               <p>{organiser.description}</p>
             </div>
-          </Link>
+            </Link>
         ))}
       </div>
     </div>
