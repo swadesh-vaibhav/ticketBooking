@@ -65,7 +65,7 @@ cd registration-service
 
 ## Deployment
 
-### Building docker images using maven 
+### Option 1 - Building docker images using maven 
 
 These commands use specs from the Dockerfile of each service.
 ```
@@ -79,7 +79,7 @@ cd registration-service
 docker build -t registration-service:0.0.1-SNAPSHOT .
 ```
 
-### Building docker images using Buildpacks through Spring Boot Maven Plugin
+### Option 2 - Building docker images using Buildpacks through Spring Boot Maven Plugin
 
 These commands identify specs automatically
 ```
@@ -89,4 +89,21 @@ cd events-service
 ```
 cd registration-service
 .\mvnw spring-boot:build-image
+```
+
+### Option 3 - Building native docker images to be deployed through GraalVM
+
+```
+cd events-service
+.\mvnw -Pnative spring-boot:build-image
+```
+```
+cd registration-service
+.\mvnw -Pnative spring-boot:build-image
+```
+
+### Hosting the image locally
+
+```
+docker compose up -d
 ```
