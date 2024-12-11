@@ -12,6 +12,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import java.util.NoSuchElementException;
 import java.util.UUID;
 
+@CrossOrigin
 @RestController
 @RequestMapping(path = "/registrations")
 public class RegistrationController {
