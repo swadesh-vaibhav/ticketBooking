@@ -1,0 +1,29 @@
+.organiser-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .organiser-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    width: 200px;
+    text-align: center;
+    transition: transform 0.3s;
+  }
+  
+  .organiser-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .organiser-card h3 {
+    color: #1e3a8a;
+    margin-bottom: 0.5rem;
+  }
+  
+  .organiser-card p {
+    color: #666;
+  }

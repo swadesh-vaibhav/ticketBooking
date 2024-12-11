@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import './OrganiserList.css'; // Import the CSS file for OrganiserList
 
 const OrganiserList = () => {
   const [organisers, setOrganisers] = useState([]);
@@ -11,13 +12,16 @@ const OrganiserList = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Organisers</h2>
-      <ul>
+    <div className="container">
+      <h2>Event Organisers</h2>
+      <div className="organiser-list">
         {organisers.map(organiser => (
-          <li key={organiser.id}>{organiser.name}</li>
+          <div key={organiser.id} className="organiser-card">
+            <h3>{organiser.name}</h3>
+            <p>{organiser.description}</p>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
