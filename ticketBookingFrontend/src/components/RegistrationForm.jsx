@@ -16,21 +16,20 @@ const RegistrationForm = () => {
         .then(response => {
           setProducts(response.data);
         })
-        .catch(error => console.error('Error fetching events:', error));
-    }
-    else {
+        .catch(error => console.error('Error fetching products:', error));
+    } else {
       setError(true);
     }
   }, [event]);
-  
+
   useEffect(() => {
     if (error) {
       alert(`Please select a valid event. Given value: ${event} is invalid.`);
     }
   }, [error]);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
     axios.post('http://localhost:8080/registrations', { productId, attendeeName })
       .then(response => {
         console.log('Registration created:', response.data);
@@ -40,32 +39,45 @@ const RegistrationForm = () => {
       .catch(error => console.error('Error creating registration:', error));
   };
 
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
+
   if (error) {
     return (
-    <div className="events-page">
-      <Link to="/">Go back to Home</Link>
-    </div>);
+      <div className="events-page">
+        <Link to="/">Go back to Home</Link>
+      </div>
+    );
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Register for {event.name}</h2>
-      <div>
-        <label>Select ticket variant:</label>
-        <select value={productId} onChange={(e) => setProductId(e.target.value)} required>
-          {products.map(product => (
-            <option key={product.id} value={product.id}>
-              {product.name} - {product.description} - ${product.price.toFixed(2)}
-            </option>
-          ))}
-        </select>
+    <div className="registration-page">
+      <h2>Register for {event?.name}</h2>
+      <div className="event-details">
+        <p><strong>Event Name:</strong> {event?.name}</p>
+        <p><strong>Location:</strong> {event?.venue.street}, {event?.venue.city}, {event?.venue.country}</p>
+        <p><strong>Date:</strong> {formatDate(event?.startDate)} to {formatDate(event?.endDate)}</p>
       </div>
-      <div>
-        <label>Attendee Name:</label>
-        <input type="text" value={attendeeName} onChange={(e) => setAttendeeName(e.target.value)} required />
-      </div>
-      <button type="submit">Register</button>
-    </form>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>Select ticket variant:</label>
+          <select value={productId} onChange={(e) => setProductId(e.target.value)} required>
+            {products.map(product => (
+              <option key={product.id} value={product.id}>
+                {product.name} - {product.description} - ${product.price.toFixed(2)}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label>Attendee Name:</label>
+          <input type="text" value={attendeeName} onChange={(e) => setAttendeeName(e.target.value)} required />
+        </div>
+        <button type="submit">Register</button>
+      </form>
+    </div>
   );
 };
 

@@ -1,24 +1,4 @@
 /* EventsList.css */
-
-.events-page {
-  font-family: 'Arial', sans-serif;
-  max-width: 1200px; /* Set a maximum width */
-  margin: 0 auto; /* Center the page */
-  padding: 2rem; /* Add padding */
-}
-  
-  .hero-section {
-    text-align: center;
-  }
-  
-  .hero-section h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-  }
-  
-  .hero-section p {
-    font-size: 1.5rem;
-  }
   
   .event-list {
     display: flex;
