@@ -1,0 +1,60 @@
+/* RegistrationDetails.css */
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  form div {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .error {
+    color: red;
+    text-align: center;
+  }
+  
+  .registration-details {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .registration-details h3 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .home-button {
+    display: block;
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .home-button:hover {
+    background-color: #0056b3;
+  }

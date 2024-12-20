@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import './RegistrationForm.css'; // Import the CSS file
 
@@ -10,6 +10,7 @@ const RegistrationForm = () => {
   const [error, setError] = useState(false);
   const location = useLocation();
   const event = location.state?.event;
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (event) {
@@ -34,6 +35,7 @@ const RegistrationForm = () => {
     axios.post('http://localhost:8080/registrations', { productId, attendeeName })
       .then(response => {
         console.log('Registration created:', response.data);
+        navigate('/registrations', { state: { registrationDetails: response.data } });
         setProductId('');
         setAttendeeName('');
       })
