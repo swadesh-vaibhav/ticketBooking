@@ -47,7 +47,7 @@ const RegistrationDetails = () => {
       {error && <p className="error">Error fetching registration details. Please check the Ticket Code and try again.</p>}
       {registrationDetails && (
         <div className="registration-details">
-          <p><strong>Ticket Code (This is your voucher code):</strong> {registrationDetails.ticket}</p>
+          <p><strong>Ticket Code (This is your voucher code):</strong> {registrationDetails.ticketCode}</p>
           <p><strong>Attendee Name:</strong> {registrationDetails.attendeeName}</p>
           <p><strong>Event Name:</strong> {registrationDetails.eventName}</p>
           <p><strong>Price:</strong> ${registrationDetails.amount.toFixed(2)}</p>

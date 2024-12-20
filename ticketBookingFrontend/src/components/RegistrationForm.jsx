@@ -36,8 +36,6 @@ const RegistrationForm = () => {
       .then(response => {
         console.log('Registration created:', response.data);
         navigate('/registrations', { state: { registrationDetails: response.data } });
-        setProductId('');
-        setAttendeeName('');
       })
       .catch(error => console.error('Error creating registration:', error));
   };
