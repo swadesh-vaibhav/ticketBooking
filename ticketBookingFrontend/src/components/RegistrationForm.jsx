@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import axios from 'axios';
+import './RegistrationForm.css'; // Import the CSS file
 
 const RegistrationForm = () => {
   const [productId, setProductId] = useState('');
