@@ -17,6 +17,7 @@ const RegistrationForm = () => {
       axios.get(`http://localhost:8081/products?eventId=${event.id}`)
         .then(response => {
           setProducts(response.data);
+          setProductId(response.data[0].id);
         })
         .catch(error => console.error('Error fetching products:', error));
     } else {
