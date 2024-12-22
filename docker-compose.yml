@@ -18,6 +18,14 @@ services:
       - "SPRING_PROFILES_ACTIVE=docker"
     ports:
       - '8081:8081'
+  payments:
+    image: payments-service:0.0.1-SNAPSHOT
+    depends_on:
+      - postgres
+    environment:
+      - "SPRING_PROFILES_ACTIVE=docker"
+    ports:
+      - '8082:8082'
   registration:
     image: registration-service:0.0.1-SNAPSHOT
     depends_on:

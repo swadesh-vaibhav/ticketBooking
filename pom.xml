@@ -8,6 +8,7 @@
     <modules>
         <module>registration-service</module>
         <module>events-service</module>
+        <module>payments-service</module>
     </modules>
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
