@@ -4,10 +4,7 @@ import com.bookmyshow.compete.ticketBooking.events.Event;
 import com.bookmyshow.compete.ticketBooking.events.EventsClient;
 import com.bookmyshow.compete.ticketBooking.events.Product;
 import jakarta.validation.Valid;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.NoSuchElementException;
 import java.util.UUID;
@@ -39,7 +36,9 @@ public class RegistrationController {
                 event.name(),
                 product.price(),
                 ticketCode,
-                registration.attendeeName()
+                registration.attendeeName(),
+                null,
+                RegistrationStatus.PENDING
         );
 
         return registrationRepository.save(newRegistration);
@@ -51,13 +50,26 @@ public class RegistrationController {
                 .orElseThrow(() -> new NoSuchElementException("Registration with ticket code " + ticketCode + " not found"));
     }
 
+    @GetMapping(path = "/ticketStatus")
+    public Registration getById(@RequestParam("id") String ticketId) {
+        return registrationRepository.findById(ticketId)
+                .orElseThrow(() -> new NoSuchElementException("Registration with id " + ticketId + " not found"));
+    }
+
     @PutMapping
     public Registration update(@RequestBody Registration registration) {
-        Registration existing = registrationRepository.findByTicketCode(registration.ticketCode())
-                .orElseThrow(() -> new NoSuchElementException("Registration with ticket code " + registration.ticketCode() + " not found"));
+        Registration existing = registrationRepository.findById(registration.id())
+                .orElseThrow(() -> new NoSuchElementException("Registration with id " + registration.id() + " not found"));
 
         Registration updatedRegistration = new Registration(
-                existing.id(), registration.productId(), registration.eventName(), registration.amount(), registration.attendeeName(), registration.ticketCode());
+            existing.id(),
+            registration.productId(),
+            registration.eventName(),
+            registration.amount(),
+            registration.attendeeName(),
+            registration.ticketCode(),
+            registration.transactionId(),
+            registration.registrationStatus());
 
         return registrationRepository.save(updatedRegistration);
     }

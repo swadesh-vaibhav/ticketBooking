@@ -1,3 +1,5 @@
+# Events
+
 ###
 GET http://localhost:8081/organizers
 
@@ -24,6 +26,8 @@ GET http://localhost:8081/products/801
 
 <> 2024-11-30T144737.200.json
 
+# Registrations
+
 ###
 POST http://localhost:8080/registrations
 Content-Type: application/json
@@ -46,7 +50,10 @@ Content-Type: application/json
 <> 2024-11-30T150954.404.json
 
 ###
-GET http://localhost:8080/registrations/4250d988-5faa-448b-8946-81689f1419b4
+GET http://localhost:8080/registrations/9983895c-6aea-48aa-8651-e99d18b8807b
+
+###
+GET http://localhost:8080/registrations/ticketStatus?id=676ba79eb934f23c6e2f2066
 
 
 # Spring Actuator
@@ -94,3 +101,8 @@ GET http://localhost:8080/actuator/metrics/http.server.requests
 
 ###
 GET http://localhost:8080/actuator/metrics/http.server.requests?tag=method:POST&tag=uri:/registrations
+
+# Payments
+
+###
+GET http://localhost:8082/transactions/create?registrationId=676baadcb783c83d7a8ce232&amount=499

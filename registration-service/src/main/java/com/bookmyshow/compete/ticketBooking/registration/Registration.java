@@ -13,5 +13,8 @@ public record Registration(@Id String id,
                            String eventName,
                            BigDecimal amount,
                            String ticketCode,
-                           @NotBlank(message = "Attendee Name cannot be blank") String attendeeName) {
+                           @NotBlank(message = "Attendee Name cannot be blank") String attendeeName,
+                           Integer transactionId,
+                           RegistrationStatus registrationStatus
+                           ) {
 }

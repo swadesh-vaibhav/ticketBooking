@@ -1,4 +1,4 @@
-package com.bookmyshow.compete.payments_service;
+package com.bookmyshow.compete.ticketBooking;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
