@@ -11,7 +11,7 @@ public record Registration(@Id String id,
                            BigDecimal amount,
                            String ticketCode,
                            String attendeeName,
-                           Integer transactionId,
+                           String transactionId,
                            RegistrationStatus registrationStatus
 ) {
 }

@@ -4,14 +4,14 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
 @Table(name="transactions")
 public class Transaction implements Serializable {
 
-    @jakarta.persistence.Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Id
+    private String id;
 
     @Column(nullable = false)
     private BigDecimal amount;
@@ -60,11 +60,11 @@ public class Transaction implements Serializable {
         this.amount = amount;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -74,5 +74,12 @@ public class Transaction implements Serializable {
 
     public void setRegistrationId(String registrationId) {
         this.registrationId = registrationId;
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        if (this.id == null) {
+            this.id = UUID.randomUUID().toString();
+        }
     }
 }

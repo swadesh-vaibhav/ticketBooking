@@ -57,7 +57,7 @@ public class TransactionsController {
     }
 
     @GetMapping("/succeed/{transactionId}")
-    public Transaction SucceedImmediately(@PathVariable("transactionId") int transactionId) {
+    public Transaction SucceedImmediately(@PathVariable("transactionId") String transactionId) {
         Transaction transaction = transactionRepository.findById(transactionId)
                 .orElseThrow(() -> new NoSuchElementException("Transaction with id " + transactionId + " not found"));
 
@@ -73,7 +73,7 @@ public class TransactionsController {
     }
 
     @GetMapping("/succeedInTen/{transactionId}")
-    public Transaction SucceedInTen(@PathVariable("transactionId") int transactionId) {
+    public Transaction SucceedInTen(@PathVariable("transactionId") String transactionId) {
 
         Transaction transaction = transactionRepository.findById(transactionId)
                 .orElseThrow(() -> new NoSuchElementException("Transaction with id " + transactionId + " not found"));
