@@ -1,12 +1,13 @@
 package com.bookmyshow.compete.ticketBooking.payments;
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name="transactions")
-public class Transaction {
+public class Transaction implements Serializable {
 
     @jakarta.persistence.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

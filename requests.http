@@ -105,4 +105,7 @@ GET http://localhost:8080/actuator/metrics/http.server.requests?tag=method:POST&
 # Payments
 
 ###
-GET http://localhost:8082/transactions/create?registrationId=676baadcb783c83d7a8ce232&amount=499
+GET http://localhost:8082/transactions/create?registrationId=676bce73049ded6da1443e33&amount=499
+
+###
+GET http://localhost:8082/transactions/succeed/1
