@@ -61,6 +61,11 @@ public class TransactionsController {
         Transaction transaction = transactionRepository.findById(transactionId)
                 .orElseThrow(() -> new NoSuchElementException("Transaction with id " + transactionId + " not found"));
 
+        if(transaction.getStatus() == TransactionStatus.SUCCEEDED)
+        {
+            return transaction;
+        }
+
         transaction.setStatus(TransactionStatus.SUCCEEDED);
         rabbitTemplate.convertAndSend("payment.success", transaction);
 
@@ -72,6 +77,11 @@ public class TransactionsController {
 
         Transaction transaction = transactionRepository.findById(transactionId)
                 .orElseThrow(() -> new NoSuchElementException("Transaction with id " + transactionId + " not found"));
+
+        if(transaction.getStatus() == TransactionStatus.SUCCEEDED)
+        {
+            return transaction;
+        }
 
         transaction.setStatus(TransactionStatus.SUCCEEDED);
         transaction.setProcessingTime(10);
