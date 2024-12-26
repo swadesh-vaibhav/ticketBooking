@@ -40,3 +40,11 @@ services:
       - "SPRING_PROFILES_ACTIVE=docker"
     ports:
       - '8080:8080'
+  update:
+    image: update-service:0.0.1-SNAPSHOT
+    depends_on:
+      - rabbitmq
+    environment:
+      - "SPRING_PROFILES_ACTIVE=docker"
+    deploy:
+      replicas: 3

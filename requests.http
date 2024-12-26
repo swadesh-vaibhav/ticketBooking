@@ -53,7 +53,7 @@ Content-Type: application/json
 GET http://localhost:8080/registrations/9983895c-6aea-48aa-8651-e99d18b8807b
 
 ###
-GET http://localhost:8080/registrations/ticketStatus?id=676ba79eb934f23c6e2f2066
+GET http://localhost:8080/registrations/ticketStatus?id=676d5928b244df6d847c5057
 
 
 # Spring Actuator
@@ -105,10 +105,10 @@ GET http://localhost:8080/actuator/metrics/http.server.requests?tag=method:POST&
 # Payments
 
 ###
-GET http://localhost:8082/transactions/create?registrationId=676d4c19b244df6d847c5055&amount=499
+GET http://localhost:8082/transactions/create?registrationId=676d5928b244df6d847c5057&amount=499
 
 ###
 GET http://localhost:8082/transactions/succeed/7c876904-970f-48e4-be26-af2af5e9c618
 
 ###
-GET http://localhost:8082/transactions/succeedInTen/7c876904-970f-48e4-be26-af2af5e9c618
+GET http://localhost:8082/transactions/succeedInTen/2dda6333-2f31-4d90-b980-f6c8daf76577
