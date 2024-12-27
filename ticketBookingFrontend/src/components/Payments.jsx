@@ -80,7 +80,7 @@ const Payments = () => {
   }
 
   return (
-    <div>
+    <div className="container">
       <h2>Payment Page</h2>
       <p><strong>Attendee:</strong> {registrationDetails.attendeeName}</p>
       <p><strong>Amount:</strong> ${registrationDetails.amount?.toFixed(2) || 'N/A'}</p>
