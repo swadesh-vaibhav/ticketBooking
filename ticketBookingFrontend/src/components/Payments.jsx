@@ -22,14 +22,13 @@ const Payments = () => {
   const handleFail = () => {
     if (!transaction?.id) return;
     axios
-      .get(`http://localhost:8082/transactions/fail/${transaction.id}`)
+      .get(`http://localhost:8082/transactions/fail/${transaction.id}?processingTime=${processingTime}`)
       .then(() => {
         navigate('/registrations', {
           state: {
             registrationDetails: {
               ...registrationDetails,
               transactionId: transaction.id,
-              registrationStatus: 'FAILED',
             },
           },
         });

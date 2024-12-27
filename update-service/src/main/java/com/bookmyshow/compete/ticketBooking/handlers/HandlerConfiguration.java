@@ -29,8 +29,13 @@ public class HandlerConfiguration {
     }
 
     @Bean
-    public Queue transactionQueue() {
+    public Queue transactionSuccessQueue() {
         return new Queue("payment.success", true);
+    }
+
+    @Bean
+    public Queue transactionFailureQueue() {
+        return new Queue("payment.failure", true);
     }
 
     @Bean

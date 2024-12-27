@@ -76,4 +76,25 @@ public class TransactionsController {
 
         return transactionRepository.save(transaction);
     }
+
+    @GetMapping("/fail/{transactionId}")
+    public Transaction Fail(@PathVariable("transactionId") String transactionId,
+                                    @RequestParam("processingTime") Integer processingTime) {
+
+        Transaction transaction = transactionRepository.findById(transactionId)
+                .orElseThrow(() -> new NoSuchElementException("Transaction with id " + transactionId + " not found"));
+
+        if(transaction.getStatus() == TransactionStatus.FAILED)
+        {
+            return transaction;
+        }
+
+        transaction.setStatus(TransactionStatus.FAILED);
+        if(processingTime != null) {
+            transaction.setProcessingTime(processingTime);
+        }
+        rabbitTemplate.convertAndSend("payment.failure", transaction);
+
+        return transactionRepository.save(transaction);
+    }
 }
