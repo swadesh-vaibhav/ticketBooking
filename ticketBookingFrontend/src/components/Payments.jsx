@@ -8,6 +8,7 @@ const Payments = () => {
   const navigate = useNavigate();
   const registrationDetails = location.state?.registrationDetails;
   const [transaction, setTransaction] = useState(null);
+  const [processingTime, setProcessingTime] = useState(0);
 
   useEffect(() => {
     if (registrationDetails) {
@@ -39,35 +40,18 @@ const Payments = () => {
   const handleSucceed = () => {
     if (!transaction?.id) return;
     axios
-      .get(`http://localhost:8082/transactions/succeed/${transaction.id}`)
+      .get(`http://localhost:8082/transactions/succeed/${transaction.id}?processingTime=${processingTime}`)
       .then(() => {
         navigate('/registrations', {
           state: {
             registrationDetails: {
-              ...registrationDetails,
-              transactionId: transaction.id
-            },
+            ...registrationDetails,
+            transactionId: transaction.id,
           },
-        });
-      })
-      .catch((err) => console.error('Error succeeding transaction:', err));
-  };
-
-  const handleSucceedInTen = () => {
-    if (!transaction?.id) return;
-    axios
-      .get(`http://localhost:8082/transactions/succeedInTen/${transaction.id}`)
-      .then(() => {
-        navigate('/registrations', {
-          state: {
-            registrationDetails: {
-              ...registrationDetails,
-              transactionId: transaction.id
-            },
-          },
-        });
-      })
-      .catch((err) => console.error('Error scheduling success:', err));
+        },
+      });
+    })
+    .catch((err) => console.error('Error scheduling success:', err));
   };
 
   if (!registrationDetails) {
@@ -86,9 +70,20 @@ const Payments = () => {
       <p><strong>Amount:</strong> ${registrationDetails.amount?.toFixed(2) || 'N/A'}</p>
       <p><strong>Transaction ID:</strong> {transaction?.id || 'Creating...'}</p>
 
+      <div>
+        <label htmlFor="processingTime">Processing Time (seconds): </label>
+        <input
+          type="number"
+          id="processingTime"
+          value={processingTime}
+          onChange={(e) => setProcessingTime(Number(e.target.value))}
+          min="0"
+          max="100"
+        />
+      </div>
+
       <button onClick={handleFail}>Fail</button>
       <button onClick={handleSucceed}>Succeed</button>
-      <button onClick={handleSucceedInTen}>Succeed in 10 seconds</button>
     </div>
   );
 };

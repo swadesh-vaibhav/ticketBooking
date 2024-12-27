@@ -57,23 +57,8 @@ public class TransactionsController {
     }
 
     @GetMapping("/succeed/{transactionId}")
-    public Transaction SucceedImmediately(@PathVariable("transactionId") String transactionId) {
-        Transaction transaction = transactionRepository.findById(transactionId)
-                .orElseThrow(() -> new NoSuchElementException("Transaction with id " + transactionId + " not found"));
-
-        if(transaction.getStatus() == TransactionStatus.SUCCEEDED)
-        {
-            return transaction;
-        }
-
-        transaction.setStatus(TransactionStatus.SUCCEEDED);
-        rabbitTemplate.convertAndSend("payment.success", transaction);
-
-        return transactionRepository.save(transaction);
-    }
-
-    @GetMapping("/succeedInTen/{transactionId}")
-    public Transaction SucceedInTen(@PathVariable("transactionId") String transactionId) {
+    public Transaction Succeed(@PathVariable("transactionId") String transactionId,
+                                    @RequestParam("processingTime") Integer processingTime) {
 
         Transaction transaction = transactionRepository.findById(transactionId)
                 .orElseThrow(() -> new NoSuchElementException("Transaction with id " + transactionId + " not found"));
@@ -84,7 +69,9 @@ public class TransactionsController {
         }
 
         transaction.setStatus(TransactionStatus.SUCCEEDED);
-        transaction.setProcessingTime(10);
+        if(processingTime != null) {
+            transaction.setProcessingTime(processingTime);
+        }
         rabbitTemplate.convertAndSend("payment.success", transaction);
 
         return transactionRepository.save(transaction);
