@@ -4,6 +4,7 @@ import EventsList from './components/EventsList';
 import OrganiserList from './components/OrganiserList';
 import RegistrationForm from './components/RegistrationForm';
 import RegistrationDetails from './components/RegistrationDetails';
+import Payments from './components/Payments';
 import './App.css'; // Import the CSS file
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
             <br/>
             <Link to='organisers'>Browse Organisers</Link>
             </div>} />
+          <Route path="/payments" element={<Payments />} />
           <Route path="/registrations" element={<RegistrationDetails />} />
           <Route path="/organisers" element={<OrganiserList />} />
           <Route path="/register" element={<RegistrationForm />} />

@@ -36,7 +36,7 @@ const RegistrationForm = () => {
     axios.post('http://localhost:8080/registrations', { productId, attendeeName })
       .then(response => {
         console.log('Registration created:', response.data);
-        navigate('/registrations', { state: { registrationDetails: response.data } });
+        navigate('/payments', { state: { registrationDetails: response.data } });
       })
       .catch(error => console.error('Error creating registration:', error));
   };

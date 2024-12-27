@@ -66,8 +66,8 @@ public class RegistrationController {
             registration.productId(),
             registration.eventName(),
             registration.amount(),
-            registration.attendeeName(),
             registration.ticketCode(),
+            registration.attendeeName(),
             registration.transactionId(),
             registration.registrationStatus());
 
