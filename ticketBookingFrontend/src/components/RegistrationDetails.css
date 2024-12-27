@@ -40,6 +40,27 @@
     text-align: center;
     color: #333;
   }
+
+  .registration-details {
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .registration-details .fa-spinner {
+    color: goldenrod;
+  }
+  
+  .registration-details .fa-check-circle {
+    color: green;
+  }
+  
+  .registration-details .fa-times-circle {
+    color: red;
+  }
+  
+  .error {
+    color: red;
+  }
   
   .home-button {
     display: block;

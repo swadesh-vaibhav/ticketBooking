@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import axios from 'axios';
-import './RegistrationDetails.css'; // Import the CSS file
+import './RegistrationDetails.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner, faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
 const RegistrationDetails = () => {
   const location = useLocation();
@@ -32,6 +34,19 @@ const RegistrationDetails = () => {
       return () => clearInterval(pollingInterval); // Cleanup interval on component unmount
     }
   }, [receivedRegistration]);
+
+  const getStatusIcon = (status) => {
+    switch (status) {
+      case 'PENDING':
+        return <FontAwesomeIcon icon={faSpinner} spin />;
+      case 'CONFIRMED':
+        return <FontAwesomeIcon icon={faCheckCircle} style={{ color: 'green' }} />;
+      case 'FAILED':
+        return <FontAwesomeIcon icon={faTimesCircle} style={{ color: 'red' }} />;
+      default:
+        return null;
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -71,7 +86,7 @@ const RegistrationDetails = () => {
           <p><strong>Attendee Name:</strong> {registrationDetails.attendeeName}</p>
           <p><strong>Event Name:</strong> {registrationDetails.eventName}</p>
           <p><strong>Price:</strong> ${parseFloat(registrationDetails.amount).toFixed(2)}</p>
-          <p><strong>Status:</strong> {registrationDetails.registrationStatus}</p>
+          <p><strong>Status:</strong> {registrationDetails.registrationStatus} {getStatusIcon(registrationDetails.registrationStatus)}</p>
           <Link to="/" className="home-button">Go to Home</Link>
         </div>
       )}
