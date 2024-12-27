@@ -4,6 +4,9 @@ import com.bookmyshow.compete.ticketBooking.events.Event;
 import com.bookmyshow.compete.ticketBooking.events.EventsClient;
 import com.bookmyshow.compete.ticketBooking.events.Product;
 import jakarta.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.NoSuchElementException;

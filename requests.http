@@ -50,10 +50,10 @@ Content-Type: application/json
 <> 2024-11-30T150954.404.json
 
 ###
-GET http://localhost:8080/registrations/9983895c-6aea-48aa-8651-e99d18b8807b
+GET http://localhost:8080/registrations/cce0f6d5-13e8-4b5d-95d1-d0e2f1fbf278
 
 ###
-GET http://localhost:8080/registrations/ticketStatus?id=676d5928b244df6d847c5057
+GET http://localhost:8080/registrations/ticketStatus?id=676edd4fecd32d5474b86e2c
 
 
 # Spring Actuator
@@ -105,10 +105,7 @@ GET http://localhost:8080/actuator/metrics/http.server.requests?tag=method:POST&
 # Payments
 
 ###
-GET http://localhost:8082/transactions/create?registrationId=676d5928b244df6d847c5057&amount=499
+GET http://localhost:8082/transactions/create?registrationId=676edd4fecd32d5474b86e2c&amount=499
 
 ###
-GET http://localhost:8082/transactions/succeed/7c876904-970f-48e4-be26-af2af5e9c618
-
-###
-GET http://localhost:8082/transactions/succeedInTen/2dda6333-2f31-4d90-b980-f6c8daf76577
+GET http://localhost:8082/transactions/succeed/50691c6d-de48-4339-8a34-de7a4f350b0f?processingTime=20
