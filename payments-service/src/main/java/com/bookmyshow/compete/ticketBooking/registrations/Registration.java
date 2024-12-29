@@ -1,11 +1,8 @@
 package com.bookmyshow.compete.ticketBooking.registrations;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 
 import java.math.BigDecimal;
 
-@Entity
-public record Registration(@Id String id,
+public record Registration(String id,
                            Integer productId,
                            String eventName,
                            BigDecimal amount,

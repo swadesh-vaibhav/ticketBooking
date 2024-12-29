@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 public record Product(
         int id,
-        @NotNull(message = "Please provide event ID while creating product") Integer eventId,
+        Integer eventId,
         String name,
         String description,
         BigDecimal price) {
